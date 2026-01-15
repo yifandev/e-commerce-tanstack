@@ -1,18 +1,7 @@
-import { requireAdminFn } from '@/data/admin'
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, redirect } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/dashboard/')({
-  beforeLoad: async () => {
-    await requireAdminFn()
+  beforeLoad: () => {
+    throw redirect({ to: '/dashboard/home' })
   },
-  component: DashboardPage,
 })
-
-function DashboardPage() {
-  return (
-    <div>
-      <h1>Admin Dashboard</h1>
-      <p>Hanya user dengan role ADMIN</p>
-    </div>
-  )
-}

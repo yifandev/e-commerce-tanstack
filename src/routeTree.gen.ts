@@ -10,44 +10,85 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UnauthorizedRouteImport } from './routes/unauthorized'
+import { Route as DashboardRouteRouteImport } from './routes/dashboard/route'
+import { Route as PublicRouteRouteImport } from './routes/_public/route'
 import { Route as AuthRouteRouteImport } from './routes/_auth/route'
-import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
-import { Route as DemoPrismaRouteImport } from './routes/demo/prisma'
+import { Route as PublicIndexRouteImport } from './routes/_public/index'
+import { Route as DashboardHomeRouteImport } from './routes/dashboard/home'
+import { Route as DashboardSettingsIndexRouteImport } from './routes/dashboard/settings/index'
+import { Route as DashboardProductsIndexRouteImport } from './routes/dashboard/products/index'
+import { Route as DashboardCustomersIndexRouteImport } from './routes/dashboard/customers/index'
+import { Route as DashboardCategoriesIndexRouteImport } from './routes/dashboard/categories/index'
+import { Route as DashboardAnalyticsIndexRouteImport } from './routes/dashboard/analytics/index'
+import { Route as PublicProductIndexRouteImport } from './routes/_public/product/index'
 import { Route as AuthSignUpIndexRouteImport } from './routes/_auth/sign-up/index'
 import { Route as AuthLoginIndexRouteImport } from './routes/_auth/login/index'
-import { Route as DemoStartServerFuncsRouteImport } from './routes/demo/start.server-funcs'
-import { Route as DemoStartApiRequestRouteImport } from './routes/demo/start.api-request'
-import { Route as DemoApiNamesRouteImport } from './routes/demo/api.names'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
-import { Route as DemoStartSsrIndexRouteImport } from './routes/demo/start.ssr.index'
-import { Route as DemoStartSsrSpaModeRouteImport } from './routes/demo/start.ssr.spa-mode'
-import { Route as DemoStartSsrFullSsrRouteImport } from './routes/demo/start.ssr.full-ssr'
-import { Route as DemoStartSsrDataOnlyRouteImport } from './routes/demo/start.ssr.data-only'
 
 const UnauthorizedRoute = UnauthorizedRouteImport.update({
   id: '/unauthorized',
   path: '/unauthorized',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardRouteRoute = DashboardRouteRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PublicRouteRoute = PublicRouteRouteImport.update({
+  id: '/_public',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthRouteRoute = AuthRouteRouteImport.update({
   id: '/_auth',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => DashboardRouteRoute,
 } as any)
-const DashboardIndexRoute = DashboardIndexRouteImport.update({
-  id: '/dashboard/',
-  path: '/dashboard/',
-  getParentRoute: () => rootRouteImport,
+const PublicIndexRoute = PublicIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => PublicRouteRoute,
 } as any)
-const DemoPrismaRoute = DemoPrismaRouteImport.update({
-  id: '/demo/prisma',
-  path: '/demo/prisma',
-  getParentRoute: () => rootRouteImport,
+const DashboardHomeRoute = DashboardHomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
+const DashboardSettingsIndexRoute = DashboardSettingsIndexRouteImport.update({
+  id: '/settings/',
+  path: '/settings/',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
+const DashboardProductsIndexRoute = DashboardProductsIndexRouteImport.update({
+  id: '/products/',
+  path: '/products/',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
+const DashboardCustomersIndexRoute = DashboardCustomersIndexRouteImport.update({
+  id: '/customers/',
+  path: '/customers/',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
+const DashboardCategoriesIndexRoute =
+  DashboardCategoriesIndexRouteImport.update({
+    id: '/categories/',
+    path: '/categories/',
+    getParentRoute: () => DashboardRouteRoute,
+  } as any)
+const DashboardAnalyticsIndexRoute = DashboardAnalyticsIndexRouteImport.update({
+  id: '/analytics/',
+  path: '/analytics/',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
+const PublicProductIndexRoute = PublicProductIndexRouteImport.update({
+  id: '/product/',
+  path: '/product/',
+  getParentRoute: () => PublicRouteRoute,
 } as any)
 const AuthSignUpIndexRoute = AuthSignUpIndexRouteImport.update({
   id: '/sign-up/',
@@ -59,163 +100,120 @@ const AuthLoginIndexRoute = AuthLoginIndexRouteImport.update({
   path: '/login/',
   getParentRoute: () => AuthRouteRoute,
 } as any)
-const DemoStartServerFuncsRoute = DemoStartServerFuncsRouteImport.update({
-  id: '/demo/start/server-funcs',
-  path: '/demo/start/server-funcs',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoStartApiRequestRoute = DemoStartApiRequestRouteImport.update({
-  id: '/demo/start/api-request',
-  path: '/demo/start/api-request',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoApiNamesRoute = DemoApiNamesRouteImport.update({
-  id: '/demo/api/names',
-  path: '/demo/api/names',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   id: '/api/auth/$',
   path: '/api/auth/$',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DemoStartSsrIndexRoute = DemoStartSsrIndexRouteImport.update({
-  id: '/demo/start/ssr/',
-  path: '/demo/start/ssr/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoStartSsrSpaModeRoute = DemoStartSsrSpaModeRouteImport.update({
-  id: '/demo/start/ssr/spa-mode',
-  path: '/demo/start/ssr/spa-mode',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoStartSsrFullSsrRoute = DemoStartSsrFullSsrRouteImport.update({
-  id: '/demo/start/ssr/full-ssr',
-  path: '/demo/start/ssr/full-ssr',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoStartSsrDataOnlyRoute = DemoStartSsrDataOnlyRouteImport.update({
-  id: '/demo/start/ssr/data-only',
-  path: '/demo/start/ssr/data-only',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRouteRouteWithChildren
   '/unauthorized': typeof UnauthorizedRoute
-  '/demo/prisma': typeof DemoPrismaRoute
-  '/dashboard': typeof DashboardIndexRoute
+  '/dashboard/home': typeof DashboardHomeRoute
+  '/': typeof PublicIndexRoute
+  '/dashboard/': typeof DashboardIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
-  '/demo/api/names': typeof DemoApiNamesRoute
-  '/demo/start/api-request': typeof DemoStartApiRequestRoute
-  '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
   '/login': typeof AuthLoginIndexRoute
   '/sign-up': typeof AuthSignUpIndexRoute
-  '/demo/start/ssr/data-only': typeof DemoStartSsrDataOnlyRoute
-  '/demo/start/ssr/full-ssr': typeof DemoStartSsrFullSsrRoute
-  '/demo/start/ssr/spa-mode': typeof DemoStartSsrSpaModeRoute
-  '/demo/start/ssr': typeof DemoStartSsrIndexRoute
+  '/product': typeof PublicProductIndexRoute
+  '/dashboard/analytics': typeof DashboardAnalyticsIndexRoute
+  '/dashboard/categories': typeof DashboardCategoriesIndexRoute
+  '/dashboard/customers': typeof DashboardCustomersIndexRoute
+  '/dashboard/products': typeof DashboardProductsIndexRoute
+  '/dashboard/settings': typeof DashboardSettingsIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
   '/unauthorized': typeof UnauthorizedRoute
-  '/demo/prisma': typeof DemoPrismaRoute
+  '/dashboard/home': typeof DashboardHomeRoute
+  '/': typeof PublicIndexRoute
   '/dashboard': typeof DashboardIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
-  '/demo/api/names': typeof DemoApiNamesRoute
-  '/demo/start/api-request': typeof DemoStartApiRequestRoute
-  '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
   '/login': typeof AuthLoginIndexRoute
   '/sign-up': typeof AuthSignUpIndexRoute
-  '/demo/start/ssr/data-only': typeof DemoStartSsrDataOnlyRoute
-  '/demo/start/ssr/full-ssr': typeof DemoStartSsrFullSsrRoute
-  '/demo/start/ssr/spa-mode': typeof DemoStartSsrSpaModeRoute
-  '/demo/start/ssr': typeof DemoStartSsrIndexRoute
+  '/product': typeof PublicProductIndexRoute
+  '/dashboard/analytics': typeof DashboardAnalyticsIndexRoute
+  '/dashboard/categories': typeof DashboardCategoriesIndexRoute
+  '/dashboard/customers': typeof DashboardCustomersIndexRoute
+  '/dashboard/products': typeof DashboardProductsIndexRoute
+  '/dashboard/settings': typeof DashboardSettingsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
   '/_auth': typeof AuthRouteRouteWithChildren
+  '/_public': typeof PublicRouteRouteWithChildren
+  '/dashboard': typeof DashboardRouteRouteWithChildren
   '/unauthorized': typeof UnauthorizedRoute
-  '/demo/prisma': typeof DemoPrismaRoute
+  '/dashboard/home': typeof DashboardHomeRoute
+  '/_public/': typeof PublicIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
-  '/demo/api/names': typeof DemoApiNamesRoute
-  '/demo/start/api-request': typeof DemoStartApiRequestRoute
-  '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
   '/_auth/login/': typeof AuthLoginIndexRoute
   '/_auth/sign-up/': typeof AuthSignUpIndexRoute
-  '/demo/start/ssr/data-only': typeof DemoStartSsrDataOnlyRoute
-  '/demo/start/ssr/full-ssr': typeof DemoStartSsrFullSsrRoute
-  '/demo/start/ssr/spa-mode': typeof DemoStartSsrSpaModeRoute
-  '/demo/start/ssr/': typeof DemoStartSsrIndexRoute
+  '/_public/product/': typeof PublicProductIndexRoute
+  '/dashboard/analytics/': typeof DashboardAnalyticsIndexRoute
+  '/dashboard/categories/': typeof DashboardCategoriesIndexRoute
+  '/dashboard/customers/': typeof DashboardCustomersIndexRoute
+  '/dashboard/products/': typeof DashboardProductsIndexRoute
+  '/dashboard/settings/': typeof DashboardSettingsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
-    | '/unauthorized'
-    | '/demo/prisma'
     | '/dashboard'
-    | '/api/auth/$'
-    | '/demo/api/names'
-    | '/demo/start/api-request'
-    | '/demo/start/server-funcs'
-    | '/login'
-    | '/sign-up'
-    | '/demo/start/ssr/data-only'
-    | '/demo/start/ssr/full-ssr'
-    | '/demo/start/ssr/spa-mode'
-    | '/demo/start/ssr'
-  fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
     | '/unauthorized'
-    | '/demo/prisma'
-    | '/dashboard'
-    | '/api/auth/$'
-    | '/demo/api/names'
-    | '/demo/start/api-request'
-    | '/demo/start/server-funcs'
-    | '/login'
-    | '/sign-up'
-    | '/demo/start/ssr/data-only'
-    | '/demo/start/ssr/full-ssr'
-    | '/demo/start/ssr/spa-mode'
-    | '/demo/start/ssr'
-  id:
-    | '__root__'
+    | '/dashboard/home'
     | '/'
-    | '/_auth'
-    | '/unauthorized'
-    | '/demo/prisma'
     | '/dashboard/'
     | '/api/auth/$'
-    | '/demo/api/names'
-    | '/demo/start/api-request'
-    | '/demo/start/server-funcs'
+    | '/login'
+    | '/sign-up'
+    | '/product'
+    | '/dashboard/analytics'
+    | '/dashboard/categories'
+    | '/dashboard/customers'
+    | '/dashboard/products'
+    | '/dashboard/settings'
+  fileRoutesByTo: FileRoutesByTo
+  to:
+    | '/unauthorized'
+    | '/dashboard/home'
+    | '/'
+    | '/dashboard'
+    | '/api/auth/$'
+    | '/login'
+    | '/sign-up'
+    | '/product'
+    | '/dashboard/analytics'
+    | '/dashboard/categories'
+    | '/dashboard/customers'
+    | '/dashboard/products'
+    | '/dashboard/settings'
+  id:
+    | '__root__'
+    | '/_auth'
+    | '/_public'
+    | '/dashboard'
+    | '/unauthorized'
+    | '/dashboard/home'
+    | '/_public/'
+    | '/dashboard/'
+    | '/api/auth/$'
     | '/_auth/login/'
     | '/_auth/sign-up/'
-    | '/demo/start/ssr/data-only'
-    | '/demo/start/ssr/full-ssr'
-    | '/demo/start/ssr/spa-mode'
-    | '/demo/start/ssr/'
+    | '/_public/product/'
+    | '/dashboard/analytics/'
+    | '/dashboard/categories/'
+    | '/dashboard/customers/'
+    | '/dashboard/products/'
+    | '/dashboard/settings/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
   AuthRouteRoute: typeof AuthRouteRouteWithChildren
+  PublicRouteRoute: typeof PublicRouteRouteWithChildren
+  DashboardRouteRoute: typeof DashboardRouteRouteWithChildren
   UnauthorizedRoute: typeof UnauthorizedRoute
-  DemoPrismaRoute: typeof DemoPrismaRoute
-  DashboardIndexRoute: typeof DashboardIndexRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
-  DemoApiNamesRoute: typeof DemoApiNamesRoute
-  DemoStartApiRequestRoute: typeof DemoStartApiRequestRoute
-  DemoStartServerFuncsRoute: typeof DemoStartServerFuncsRoute
-  DemoStartSsrDataOnlyRoute: typeof DemoStartSsrDataOnlyRoute
-  DemoStartSsrFullSsrRoute: typeof DemoStartSsrFullSsrRoute
-  DemoStartSsrSpaModeRoute: typeof DemoStartSsrSpaModeRoute
-  DemoStartSsrIndexRoute: typeof DemoStartSsrIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -227,6 +225,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UnauthorizedRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_public': {
+      id: '/_public'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof PublicRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_auth': {
       id: '/_auth'
       path: ''
@@ -234,26 +246,68 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/dashboard/': {
       id: '/dashboard/'
-      path: '/dashboard'
-      fullPath: '/dashboard'
+      path: '/'
+      fullPath: '/dashboard/'
       preLoaderRoute: typeof DashboardIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof DashboardRouteRoute
     }
-    '/demo/prisma': {
-      id: '/demo/prisma'
-      path: '/demo/prisma'
-      fullPath: '/demo/prisma'
-      preLoaderRoute: typeof DemoPrismaRouteImport
-      parentRoute: typeof rootRouteImport
+    '/_public/': {
+      id: '/_public/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof PublicIndexRouteImport
+      parentRoute: typeof PublicRouteRoute
+    }
+    '/dashboard/home': {
+      id: '/dashboard/home'
+      path: '/home'
+      fullPath: '/dashboard/home'
+      preLoaderRoute: typeof DashboardHomeRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/dashboard/settings/': {
+      id: '/dashboard/settings/'
+      path: '/settings'
+      fullPath: '/dashboard/settings'
+      preLoaderRoute: typeof DashboardSettingsIndexRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/dashboard/products/': {
+      id: '/dashboard/products/'
+      path: '/products'
+      fullPath: '/dashboard/products'
+      preLoaderRoute: typeof DashboardProductsIndexRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/dashboard/customers/': {
+      id: '/dashboard/customers/'
+      path: '/customers'
+      fullPath: '/dashboard/customers'
+      preLoaderRoute: typeof DashboardCustomersIndexRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/dashboard/categories/': {
+      id: '/dashboard/categories/'
+      path: '/categories'
+      fullPath: '/dashboard/categories'
+      preLoaderRoute: typeof DashboardCategoriesIndexRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/dashboard/analytics/': {
+      id: '/dashboard/analytics/'
+      path: '/analytics'
+      fullPath: '/dashboard/analytics'
+      preLoaderRoute: typeof DashboardAnalyticsIndexRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/_public/product/': {
+      id: '/_public/product/'
+      path: '/product'
+      fullPath: '/product'
+      preLoaderRoute: typeof PublicProductIndexRouteImport
+      parentRoute: typeof PublicRouteRoute
     }
     '/_auth/sign-up/': {
       id: '/_auth/sign-up/'
@@ -269,60 +323,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthLoginIndexRouteImport
       parentRoute: typeof AuthRouteRoute
     }
-    '/demo/start/server-funcs': {
-      id: '/demo/start/server-funcs'
-      path: '/demo/start/server-funcs'
-      fullPath: '/demo/start/server-funcs'
-      preLoaderRoute: typeof DemoStartServerFuncsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo/start/api-request': {
-      id: '/demo/start/api-request'
-      path: '/demo/start/api-request'
-      fullPath: '/demo/start/api-request'
-      preLoaderRoute: typeof DemoStartApiRequestRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo/api/names': {
-      id: '/demo/api/names'
-      path: '/demo/api/names'
-      fullPath: '/demo/api/names'
-      preLoaderRoute: typeof DemoApiNamesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/api/auth/$': {
       id: '/api/auth/$'
       path: '/api/auth/$'
       fullPath: '/api/auth/$'
       preLoaderRoute: typeof ApiAuthSplatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo/start/ssr/': {
-      id: '/demo/start/ssr/'
-      path: '/demo/start/ssr'
-      fullPath: '/demo/start/ssr'
-      preLoaderRoute: typeof DemoStartSsrIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo/start/ssr/spa-mode': {
-      id: '/demo/start/ssr/spa-mode'
-      path: '/demo/start/ssr/spa-mode'
-      fullPath: '/demo/start/ssr/spa-mode'
-      preLoaderRoute: typeof DemoStartSsrSpaModeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo/start/ssr/full-ssr': {
-      id: '/demo/start/ssr/full-ssr'
-      path: '/demo/start/ssr/full-ssr'
-      fullPath: '/demo/start/ssr/full-ssr'
-      preLoaderRoute: typeof DemoStartSsrFullSsrRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo/start/ssr/data-only': {
-      id: '/demo/start/ssr/data-only'
-      path: '/demo/start/ssr/data-only'
-      fullPath: '/demo/start/ssr/data-only'
-      preLoaderRoute: typeof DemoStartSsrDataOnlyRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -342,20 +347,50 @@ const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
   AuthRouteRouteChildren,
 )
 
-const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AuthRouteRoute: AuthRouteRouteWithChildren,
-  UnauthorizedRoute: UnauthorizedRoute,
-  DemoPrismaRoute: DemoPrismaRoute,
+interface PublicRouteRouteChildren {
+  PublicIndexRoute: typeof PublicIndexRoute
+  PublicProductIndexRoute: typeof PublicProductIndexRoute
+}
+
+const PublicRouteRouteChildren: PublicRouteRouteChildren = {
+  PublicIndexRoute: PublicIndexRoute,
+  PublicProductIndexRoute: PublicProductIndexRoute,
+}
+
+const PublicRouteRouteWithChildren = PublicRouteRoute._addFileChildren(
+  PublicRouteRouteChildren,
+)
+
+interface DashboardRouteRouteChildren {
+  DashboardHomeRoute: typeof DashboardHomeRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
+  DashboardAnalyticsIndexRoute: typeof DashboardAnalyticsIndexRoute
+  DashboardCategoriesIndexRoute: typeof DashboardCategoriesIndexRoute
+  DashboardCustomersIndexRoute: typeof DashboardCustomersIndexRoute
+  DashboardProductsIndexRoute: typeof DashboardProductsIndexRoute
+  DashboardSettingsIndexRoute: typeof DashboardSettingsIndexRoute
+}
+
+const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
+  DashboardHomeRoute: DashboardHomeRoute,
   DashboardIndexRoute: DashboardIndexRoute,
+  DashboardAnalyticsIndexRoute: DashboardAnalyticsIndexRoute,
+  DashboardCategoriesIndexRoute: DashboardCategoriesIndexRoute,
+  DashboardCustomersIndexRoute: DashboardCustomersIndexRoute,
+  DashboardProductsIndexRoute: DashboardProductsIndexRoute,
+  DashboardSettingsIndexRoute: DashboardSettingsIndexRoute,
+}
+
+const DashboardRouteRouteWithChildren = DashboardRouteRoute._addFileChildren(
+  DashboardRouteRouteChildren,
+)
+
+const rootRouteChildren: RootRouteChildren = {
+  AuthRouteRoute: AuthRouteRouteWithChildren,
+  PublicRouteRoute: PublicRouteRouteWithChildren,
+  DashboardRouteRoute: DashboardRouteRouteWithChildren,
+  UnauthorizedRoute: UnauthorizedRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
-  DemoApiNamesRoute: DemoApiNamesRoute,
-  DemoStartApiRequestRoute: DemoStartApiRequestRoute,
-  DemoStartServerFuncsRoute: DemoStartServerFuncsRoute,
-  DemoStartSsrDataOnlyRoute: DemoStartSsrDataOnlyRoute,
-  DemoStartSsrFullSsrRoute: DemoStartSsrFullSsrRoute,
-  DemoStartSsrSpaModeRoute: DemoStartSsrSpaModeRoute,
-  DemoStartSsrIndexRoute: DemoStartSsrIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
